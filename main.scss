@@ -1,0 +1,98 @@
+
+// variable in SASS
+$primary-color:green;
+$bg-color:#2c3e50;
+$hover-color: #16a085;
+$text-color:#ffffff;
+
+
+
+// nesting in SASS
+nav{
+    ul{
+        background: $bg-color;
+        color: $text-color;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li{
+            display: inline-block;
+
+            a{
+                color: $text-color;
+                display: inline-block;
+                padding: 10px 16px;
+                text-decoration: none;
+            }
+            a:hover{
+                background: $hover-color;
+            }
+
+        }
+    }
+}
+
+
+// to include Partials in SASS
+@import "profile";
+
+p{
+    font-size: 24px;
+}
+
+// extend inheritance
+.panel{
+    border:3px solid dodgerblue;
+    background:#eea571;
+    margin: 10px;
+}
+
+// mixins in SASS
+
+@mixin border-radius($radius){
+    -webkit-border-radius:$radius;
+    -moz-border-radius:$radius;
+    -ms-border-radius:$radius;
+}
+
+.little-panel{
+    @extend .panel;
+    @include border-radius(5px);
+    font-size: 12px;
+    padding: 5px;
+}
+
+.big-panel{
+    @extend .panel;
+    @include border-radius(20px);
+    font-size: 32px;
+    padding: 20px;
+}
+
+// operations in SASS
+$buttonBg:#006699;
+$buttonColor:#ffffff;
+$buttonPadding:5px;
+
+.primary-btn{
+    background-color: $buttonBg;
+    border-radius: 8px;
+    border: none;
+    color: $buttonColor;
+    display: inline-block;
+    padding: $buttonPadding;
+    text-decoration: none;
+}
+
+.primary-btn-large{
+    @extend .primary-btn;
+    padding: $buttonPadding + 30;
+    width: 150px;
+    // height: 35px;
+}
+
+.primay-btn-light{
+    @extend .primary-btn;
+    // background: $buttonBg;
+}
